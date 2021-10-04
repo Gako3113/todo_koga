@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>To do リスト</title>
+{% endblock %}
+
+{% block body %}
+<div class="content bg-gray"">
+    <h1 class="text-white bg-secondary">Todoリスト</h1>
+
+    {% if tasks|length < 1 %}
+    <h4 style="text-align: center;" class="text-white">あなたのtaskは？</h4>
+    {% else %}
+
+    <table class="table table-bg-secondary text-white">
+        <tr>
+            <th>To do</th>
+            <th>登録日</th>
+            <th>〆切日</th>
+            <th>アクション</th>
+            <th>ストップウォッチ</th>
+        </tr>
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.content }}</td>
+            <td>{{ task.date_created.date() }}</td>
+            <td>{{ task.due.date() }}</td>
+            <td>
+                <a class="btn btn-danger" href="/delete/{{task.id}}">やっぱやめる</a>
+                <a class="btn btn-primary" href="/edit/{{task.id}}">ちょっと変える</a>
+                <a class="btn btn-dark" href="/delete/{{task.id}}">終わったー！</a>
+
+            </td>
+            <td>
+                <div id="timer">00:00.000</div>
+                    <div class="controls">
+                    <div class="btn btn-outline-light" id="start">スタート</div>
+                    <div class="btn btn-outline-light" id="stop">ストップ</div>
+                    <div class="btn btn-outline-light" id="reset">リセット</div>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+    <form action="/" method="post" class="bg-secondary text-white">
+        <label for='content'>内容</label>
+        <input type="text" name="content" id="content" class="form-control bg-secondary text-white" width="50%">
+        <label for="due">〆切</label>
+        <input type="date" name="due" id="due" class="form-control bg-secondary text-white" width="50%" required>
+        <input type="submit" value="新規追加" class="btn btn-success">
+    </form>
+
+</div>
+{% endblock %}
