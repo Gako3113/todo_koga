@@ -31,8 +31,8 @@
 
 ### 使った技術
 
-# - Python
-# - Flask
-# - HTML
-# - CSS
-# - JavaScript
+#### - Python
+#### - Flask
+#### - HTML
+#### - CSS
+#### - JavaScript
