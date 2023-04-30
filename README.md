@@ -1,6 +1,5 @@
 # To do リスト
 
-#### Video Demo:  <https://youtu.be/WlgYm5gImoM>
 #### Description:
 
 これは私が初めて開発したwebアプリケーションです。
